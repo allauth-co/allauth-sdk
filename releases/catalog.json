@@ -4,7 +4,7 @@
   "reconstructedHistory": true,
   "importedAt": "2026-10-30T01:38:34.868686+00:00",
   "sourceArchiveCatalog": "https://allauth.co/sdk/integrity.json",
-  "latestVersion": "1.4.4",
+  "latestVersion": "1.4.5",
   "releases": [
     {
       "version": "1.0.0",
@@ -2248,6 +2248,164 @@
           "path": "support-server.ts",
           "sha256": "96c478994c63621fca030b44081a68e61223f2151bc4c482cf05c4faed0abf39",
           "bytes": 15139
+        },
+        {
+          "path": "ui.tsx",
+          "sha256": "908740817955fc395dff0d95d60e8f426b3cf37eb777b6c956caf86287ad3409",
+          "bytes": 5441
+        }
+      ]
+    },
+    {
+      "dateConfidence": "pending",
+      "version": "1.4.5",
+      "title": "AllAuth React SDK 1.4.5: isolated application support",
+      "summary": "Opt-in application-initiated support can run on a separate application hostname while ordinary administrator tabs retain their sign-in. The proxy preserves safe native actor/session context and validates the exact application return destination. Existing console support, cookies, signed transport and sign-in remain compatible.",
+      "notes": [
+        "Add the exact applicationReturnUrl to the support proxy options when enabling application-initiated support on an isolated hostname. The matching service must explicitly enable delegation and register the separate callback.",
+        "Safe actor kind/session, application audit ID and context are preserved through support status. Native session credentials remain in HttpOnly cookies, and support cleanup returns only the configured main-app administrator destination.",
+        "The host must enforce its own current administrator/context checks on business and native proxy requests, block ordinary auth/admin flows on the support hostname and restrict native writes there to support-stop. Existing integrations remain disabled until explicitly configured; no customer upgrade or credential change is automatic."
+      ],
+      "sourceUrl": "https://github.com/thegarty/allauth-sdk/tree/v1.4.5/packages/react",
+      "provenance": [
+        {
+          "kind": "release",
+          "details": "Native isolated-origin handoff/status/cleanup tests and the public SDK regression verify safe application actor context and exact return destinations. Archive/source parity, retained-client request checks and a Vite-style ES2020 bundler consumer typecheck passed before publication. The original publication time will be recorded by GitHub release metadata.",
+          "files": [
+            "support-server.ts",
+            "support-banner.tsx",
+            "README.md"
+          ]
+        }
+      ],
+      "publishedAt": null,
+      "compatibility": "backward-compatible",
+      "upgradeUrl": "https://allauth.co/sdk/quickstart",
+      "changelogUrl": "https://allauth.co/releases/sdk-1-4-5",
+      "downloadUrl": "https://allauth.co/sdk/allauth-react-1.4.5.tgz",
+      "sha256": "63c5fc7cdf264f92f065d800ef0b6ea53650ccb5f5d3232ac1ff6633d6e5c397",
+      "filename": "allauth-react-1.4.5.tgz",
+      "archivePath": "releases/archives/allauth-react-1.4.5.tgz",
+      "checksumPath": "releases/checksums/allauth-react-1.4.5.tgz.sha256",
+      "tag": "v1.4.5",
+      "githubReleaseUrl": "https://github.com/thegarty/allauth-sdk/releases/tag/v1.4.5",
+      "packagePrivate": true,
+      "sdkLicense": null,
+      "sourceFiles": [
+        {
+          "path": "BETTER_AUTH_UI.md",
+          "sha256": "f0adc3cbc86c96f819affc8864ca7cd745927758559b3a0777c8f1f69acda329",
+          "bytes": 5660
+        },
+        {
+          "path": "README.md",
+          "sha256": "1163234b6ddd02be447a23c87bbf796aaed239f60a1797a742d4945ca8faf99b",
+          "bytes": 13823
+        },
+        {
+          "path": "account-settings.tsx",
+          "sha256": "edcfa96b5e0a0f7cf3122e254a9d0147a0727624851176772be1e1d3b19cffdb",
+          "bytes": 10943
+        },
+        {
+          "path": "allauth-wordmark.tsx",
+          "sha256": "33a358d83663d9fe9cd5da7789302b0b5005e633d7cdbacad07a595b8068a3cf",
+          "bytes": 2445
+        },
+        {
+          "path": "auth-return.ts",
+          "sha256": "11fb99ab4dfad4988e3dbdcf09a7c1216cd72383ebda6760a175691515a73084",
+          "bytes": 3487
+        },
+        {
+          "path": "avatar-upload.tsx",
+          "sha256": "b2101bee74c59dd5db6c66321633fd94bd14c3f9e42662b387abd4854a13b58e",
+          "bytes": 6638
+        },
+        {
+          "path": "branding.ts",
+          "sha256": "71d0276170b2c121b59ee678fe11935b1ada0cb39eda92dc75ece6dca275ffe7",
+          "bytes": 7547
+        },
+        {
+          "path": "client.ts",
+          "sha256": "08150006a4f83196a2414826cd043aba3b0a8bf584c94e261819ba1eff45d84b",
+          "bytes": 2885
+        },
+        {
+          "path": "dialog.tsx",
+          "sha256": "92b0df2de353f1f4b491f71fc24a624aa007a430fc4776666267c33c6f3cd281",
+          "bytes": 5051
+        },
+        {
+          "path": "google-icon.ts",
+          "sha256": "da34e77b4cfecb5fbeaabb8dbb714ca902d2ea48ff6e12df322d086dbda7e946",
+          "bytes": 45114
+        },
+        {
+          "path": "header.css",
+          "sha256": "7df8e2d284b1174424b58c41a573206d6f89e961732a7eeae9f295753ff64db1",
+          "bytes": 25773
+        },
+        {
+          "path": "header.tsx",
+          "sha256": "9c0319b1183fb9150589f1860c058dd4ea10483811575c1f747f4b4f7b1bd02a",
+          "bytes": 13655
+        },
+        {
+          "path": "helpers.ts",
+          "sha256": "20d1ff65bb3a08c2b8f87b30e5b7a4caffc1451fbd1022fd285f1be31de93a50",
+          "bytes": 3215
+        },
+        {
+          "path": "invitations.ts",
+          "sha256": "f267179803e60332aac990a7410fc2f60b3c39a2ab236dca1d55444e9e756fad",
+          "bytes": 3957
+        },
+        {
+          "path": "next.ts",
+          "sha256": "c78c1fe08209c27b43b8086c3e831b254fef24a73bfac1847554faf5798b0105",
+          "bytes": 13417
+        },
+        {
+          "path": "organization-profile.tsx",
+          "sha256": "4efbff2a1f23315ff83c155be6d7b232ccb85b89c574dbb784ffe53a92ec4640",
+          "bytes": 45341
+        },
+        {
+          "path": "package.json",
+          "sha256": "6cabf82e796d55d24fe042364cb6d54008512c1a1a5be029ab355faeddd3e8bf",
+          "bytes": 1377
+        },
+        {
+          "path": "passkey.ts",
+          "sha256": "025c9c047683300457a0e453e476d2cd3424521ccd7208533d62162cef2b05c4",
+          "bytes": 4435
+        },
+        {
+          "path": "password-policy.ts",
+          "sha256": "b1580c5ea33b3962fb19813d775d02005338517934eb6ca1c3e5739600a6e918",
+          "bytes": 2973
+        },
+        {
+          "path": "react.tsx",
+          "sha256": "de5ab24b35b3acc2b2d14535199b9ca3ad50666288bba4212776bacf717db125",
+          "bytes": 67951
+        },
+        {
+          "path": "styles.css",
+          "sha256": "b9018f97e82dd72528b85ae7374d2ed550fb99eb8c5788c36aaa6aefe2ffd46f",
+          "bytes": 13658
+        },
+        {
+          "path": "support-banner.tsx",
+          "sha256": "17bd4378f7985e7f9a83664f67b835eecc33b5d2362fb2a4239436d74b2b9e46",
+          "bytes": 5972
+        },
+        {
+          "path": "support-server.ts",
+          "sha256": "c40d77f3aefb6b1f7de52e9f0cf5d026563b9a248a3ada9fb4eef124371d1770",
+          "bytes": 18843
         },
         {
           "path": "ui.tsx",
