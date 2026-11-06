@@ -135,10 +135,9 @@ export function AllAuthProvider({
 		[path],
 	);
 	useEffect(() => {
-		setChallenge(
-			new URLSearchParams(window.location.search).get("challenge") ===
-				"two-factor",
-		);
+		setChallenge(["two-factor", "broker-two-factor"].includes(
+			new URLSearchParams(window.location.search).get("challenge") || "",
+		));
 	}, []);
 	useEffect(() => {
 		if (configured) {
@@ -477,7 +476,8 @@ function GoogleButton({ busy, connecting, onClick }: { busy: boolean; connecting
 }
 
 function TwoFactorChallenge({ afterSignInUrl, logo }: { afterSignInUrl: string; logo?: ReactNode }) {
-	const { client, challengeMethods, setChallenge } = useAllAuth();
+	const { client, challengeMethods, setChallenge, basePath, signInUrl } = useAllAuth();
+	const broker = typeof window !== "undefined" && new URLSearchParams(window.location.search).get("challenge") === "broker-two-factor";
 	const id = useId();
 	const [backup, setBackup] = useState(false);
 	const [code, setCode] = useState("");
@@ -489,6 +489,17 @@ function TwoFactorChallenge({ afterSignInUrl, logo }: { afterSignInUrl: string; 
 		setBusy(true);
 		setError("");
 		try {
+			if (broker) {
+				const response = await fetch(`${basePath}/broker-two-factor/verify`, {
+					method: "POST", credentials: "same-origin", cache: "no-store",
+					headers: { "content-type": "application/json" },
+					body: JSON.stringify({ code: code.trim(), method: backup ? "backup" : "totp" }),
+				});
+				const result: { url?: string; error?: string } = await response.json();
+				if (!response.ok || !result.url) throw new Error(typeof result.error === "string" ? result.error : "Unable to verify this code. Try again or restart sign-in.");
+				window.location.assign(result.url);
+				return;
+			}
 			const response = backup
 				? await client.twoFactor.verifyBackupCode({ code: code.trim(), trustDevice: false })
 				: await client.twoFactor.verifyTotp({ code: code.trim(), trustDevice: false });
@@ -518,6 +529,7 @@ function TwoFactorChallenge({ afterSignInUrl, logo }: { afterSignInUrl: string; 
 				<button type="button" className="allauth-back-button" disabled={busy} onClick={() => { setBackup(!backup); setCode(""); setError(""); }}>
 					{backup ? "Use authenticator code" : "Use a backup code"}
 				</button>
+				{broker && <a className="allauth-back-button" href={signInUrl}>Start sign-in again</a>}
 			</div>
 			<AuthFooter />
 		</>

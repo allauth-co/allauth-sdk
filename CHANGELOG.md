@@ -2,6 +2,21 @@
 
 These notes reconstruct verified public archive contents. Git import dates are not historical SDK publication dates. Unknown dates are retained as unknown.
 
+## 1.4.6
+
+Applications can explicitly display the shared AllAuth authenticator or backup-code challenge inside their own sign-in screen. AllAuth continues to verify the factor and resume native OAuth; existing integrations retain hosted verification unless they upgrade and opt in.
+
+Publication time: see the immutable GitHub release metadata; no preparation timestamp is substituted.
+
+- Enable brokerTwoFactor: { signInUrl: "/sign-in" } on the standard Next.js /api/allauth proxy after the public local sign-in page renders the matching portable SDK SignIn component. The matching AllAuth service must be deployed; older services keep hosted MFA.
+- Expiring handoffs are bound to the registered application, exact origin and initiating browser. Central session cookies stay on AllAuth, and native single-use challenges, attempt limits, lockout, rate limiting, OAuth state and PKCE remain authoritative.
+- After verification, a short browser redirect restores the AllAuth session and resumes native OAuth. Required consent may still display its hosted screen. Authenticator and backup codes are supported; custom proxy base paths and the optional Better Auth UI registry wrapper retain hosted MFA.
+- Existing application-account MFA, direct providers, cookies and signed requests remain compatible. Customer upgrades are explicit, every previous archive is retained unchanged, and no database migration is required.
+
+[Source](https://github.com/thegarty/allauth-sdk/tree/v1.4.6/packages/react) · [Archive](https://allauth.co/sdk/allauth-react-1.4.6.tgz) · [Release record](https://allauth.co/releases/sdk-1-4-6)
+
+SHA-256: `3e19d53f8fd90267b525412cdbeebe9182180608d8621777b81b6dfc6d1e69b5`
+
 ## 1.4.5
 
 Opt-in application-initiated support can run on a separate application hostname while ordinary administrator tabs retain their sign-in. The proxy preserves safe native actor/session context and validates the exact application return destination. Existing console support, cookies, signed transport and sign-in remain compatible.
