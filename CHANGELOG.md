@@ -2,6 +2,20 @@
 
 These notes reconstruct verified public archive contents. Git import dates are not historical SDK publication dates. Unknown dates are retained as unknown.
 
+## 1.4.5
+
+Opt-in application-initiated support can run on a separate application hostname while ordinary administrator tabs retain their sign-in. The proxy preserves safe native actor/session context and validates the exact application return destination. Existing console support, cookies, signed transport and sign-in remain compatible.
+
+Publication time: see the immutable GitHub release metadata; no preparation timestamp is substituted.
+
+- Add the exact applicationReturnUrl to the support proxy options when enabling application-initiated support on an isolated hostname. The matching service must explicitly enable delegation and register the separate callback.
+- Safe actor kind/session, application audit ID and context are preserved through support status. Native session credentials remain in HttpOnly cookies, and support cleanup returns only the configured main-app administrator destination.
+- The host must enforce its own current administrator/context checks on business and native proxy requests, block ordinary auth/admin flows on the support hostname and restrict native writes there to support-stop. Existing integrations remain disabled until explicitly configured; no customer upgrade or credential change is automatic.
+
+[Source](https://github.com/thegarty/allauth-sdk/tree/v1.4.5/packages/react) · [Archive](https://allauth.co/sdk/allauth-react-1.4.5.tgz) · [Release record](https://allauth.co/releases/sdk-1-4-5)
+
+SHA-256: `63c5fc7cdf264f92f065d800ef0b6ea53650ccb5f5d3232ac1ff6633d6e5c397`
+
 ## 1.4.4
 
 The Next.js application proxy now forwards Retry-After from AllAuth so applications can honor a temporary session-check rate refusal. HTTP status, JSON error codes and cookie headers remain intact. Existing integrations receive the service-side session-check resilience fix without an SDK upgrade; update your pinned package and rebuild to forward the response header to browsers.

@@ -1,10 +1,14 @@
 <!-- cspell:words organisation organisations -->
 
-# AllAuth React SDK 1.4.4
+# AllAuth React SDK 1.4.5
 
-Previous verified published SDK: **1.4.3**, [download](https://allauth.co/sdk/allauth-react-1.4.3.tgz).
-SHA-256: `1945650e97e2ad364e7be36f87d276c58544c3ed2e589ce187aa7a4489c96178`.
-The default setup SDK is **1.4.4**. Its Next.js application proxy forwards AllAuth's `Retry-After` response header unchanged, including numeric delays and HTTP dates in JSON or streamed responses. HTTP 429, stable JSON error codes, scoped cookie headers and existing request signatures remain compatible. Previously published archives are immutable.
+Previous verified published SDK: **1.4.4**, [download](https://allauth.co/sdk/allauth-react-1.4.4.tgz).
+SHA-256: `bf3896199f789253fbaf0acb6a8c7f8975912bf8bec1118c54668c67ac9896ee`.
+The prepared SDK candidate is **1.4.5**. Publication and deployment must be verified separately.
+
+SDK 1.4.5 adds opt-in isolated application support: set the server proxy support option `applicationReturnUrl` to the exact main-app administrator URL configured in the environment policy. The native support binding (actor kind/session, application audit ID and context) is preserved without exposing credentials; support end returns that checked application destination. Existing console support and ordinary sessions remain compatible. Browser native endpoints retain their existing allowlist; the host application must enforce its support-origin permissions and restrict native writes.
+
+SDK 1.4.4 introduced the following compatible proxy behavior. Its Next.js application proxy forwards AllAuth's `Retry-After` response header unchanged, including numeric delays and HTTP dates in JSON or streamed responses. HTTP 429, stable JSON error codes, scoped cookie headers and existing request signatures remain compatible. Previously published archives are immutable.
 
 AllAuth's service-side session-check resilience fix works with existing SDK versions. Upgrade your pinned package and rebuild your application to forward `Retry-After` through the proxy to browsers. This SDK change adds no automatic retries, completed session-result cache or customer dependency upgrades.
 
