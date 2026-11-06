@@ -9,6 +9,7 @@
     "auth-return.ts",
     "avatar-upload.tsx",
     "branding.ts",
+    "broker-two-factor-server.ts",
     "client.ts",
     "dialog.tsx",
     "google-icon.ts",

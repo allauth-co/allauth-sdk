@@ -2,14 +2,19 @@ import { createHash, createHmac } from "node:crypto";
 import { isIP } from "node:net";
 import type { AllAuthSupportAccessOptions } from "./support-server";
 import { createSupportRoutes } from "./support-server";
+import { createBrokerTwoFactorRoutes } from "./broker-two-factor-server";
+import type { AllAuthBrokerTwoFactorOptions } from "./broker-two-factor-server";
 
 export type { AllAuthSupportAccessOptions } from "./support-server";
+export type { AllAuthBrokerTwoFactorOptions } from "./broker-two-factor-server";
 
 export interface AllAuthProxyOptions {
 	project: string;
 	proxySecret: string;
 	appOrigin: string;
 	allauthURL?: string;
+	/** Opt into the matching SDK SignIn challenge; older integrations retain hosted MFA. */
+	brokerTwoFactor?: AllAuthBrokerTwoFactorOptions;
 	/** Enable the explicitly registered support callback and safe session restoration. */
 	supportAccess?: AllAuthSupportAccessOptions;
 	/** Extract the IP using headers verified by your hosting provider. */
@@ -163,6 +168,9 @@ export function createAllAuthProxy(options: AllAuthProxyOptions) {
 				"Use exact HTTPS origins (HTTP loopback is allowed for development).",
 			);
 	const prefix = `allauth_project_${options.project}.`;
+	const brokerTwoFactor = options.brokerTwoFactor
+		? createBrokerTwoFactorRoutes(options.project, app, remote, options.brokerTwoFactor)
+		: null;
 	const cookieHeaders = (upstream: Response) =>
 		upstream.headers.getSetCookie().flatMap((cookie) => {
 			if (
@@ -297,9 +305,12 @@ export function createAllAuthProxy(options: AllAuthProxyOptions) {
 			);
 		if (support && endpoint.startsWith("support/"))
 			return support(request, endpoint);
+		if (brokerTwoFactor && endpoint === "broker-two-factor/accept")
+			return brokerTwoFactor.accept(request);
 		if (
 			!["GET", "POST"].includes(request.method) ||
-			!(exactPaths.has(endpoint) || pluginPath.test(endpoint))
+			!(exactPaths.has(endpoint) || pluginPath.test(endpoint) ||
+				brokerTwoFactor && endpoint === "broker-two-factor/verify" && request.method === "POST")
 		)
 			return failure(
 				"This auth endpoint is not available through the app integration.",
@@ -406,7 +417,11 @@ export function createAllAuthProxy(options: AllAuthProxyOptions) {
 						headers: resultHeaders,
 					});
 				const data: unknown = JSON.parse(body);
-				return Response.json(browserResponse(data), {
+				if (brokerTwoFactor && endpoint === "broker-two-factor/verify" && upstream.ok)
+					return Response.json(brokerTwoFactor.completion(data, resultHeaders), {
+						status: upstream.status, headers: resultHeaders,
+					});
+				return Response.json(browserResponse(upstream.ok && brokerTwoFactor ? brokerTwoFactor.decorate(endpoint, data, resultHeaders) : data), {
 					status: upstream.status,
 					headers: resultHeaders,
 				});

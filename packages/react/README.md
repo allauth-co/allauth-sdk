@@ -1,10 +1,14 @@
 <!-- cspell:words organisation organisations -->
 
-# AllAuth React SDK 1.4.5
+# AllAuth React SDK 1.4.6
 
-Previous verified published SDK: **1.4.4**, [download](https://allauth.co/sdk/allauth-react-1.4.4.tgz).
-SHA-256: `bf3896199f789253fbaf0acb6a8c7f8975912bf8bec1118c54668c67ac9896ee`.
-The prepared SDK candidate is **1.4.5**. Publication and deployment must be verified separately.
+Previous verified published SDK: **1.4.5**, [download](https://allauth.co/sdk/allauth-react-1.4.5.tgz).
+SHA-256: `63c5fc7cdf264f92f065d800ef0b6ea53650ccb5f5d3232ac1ff6633d6e5c397`.
+The prepared SDK candidate is **1.4.6**. Publication and deployment must be verified separately.
+
+SDK 1.4.6 adds opt-in in-app verification for the shared AllAuth broker's authenticator and backup-code challenge. Use the matching portable `SignIn` component and standard `/api/allauth` proxy, then add `brokerTwoFactor: { signInUrl: "/sign-in" }` to the server's `createAllAuthProxy` options. Keep the sign-in page public. The option is disabled by default; older SDKs, services and unsupported integrations retain hosted MFA. Direct providers and application-account MFA keep their existing behaviour.
+
+The application receives an expiring browser-bound handoff in HttpOnly cookies, submits the code through its signed proxy and follows a one-use completion redirect. Central session cookies remain on AllAuth; native attempt limits, lockout, single-use verification, OAuth state, PKCE and consent remain authoritative. A brief redirect restores the platform session after verification; required consent may still display its hosted screen. This option is not yet supported by the optional Better Auth UI registry wrapper or custom proxy base paths. See the repository guide `docs/content/docs/integrations/allauth-in-app-two-factor.mdx` for the full flow and rollout requirements.
 
 SDK 1.4.5 adds opt-in isolated application support: set the server proxy support option `applicationReturnUrl` to the exact main-app administrator URL configured in the environment policy. The native support binding (actor kind/session, application audit ID and context) is preserved without exposing credentials; support end returns that checked application destination. Existing console support and ordinary sessions remain compatible. Browser native endpoints retain their existing allowlist; the host application must enforce its support-origin permissions and restrict native writes.
 

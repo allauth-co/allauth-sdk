@@ -1,6 +1,6 @@
 {
   "name": "@allauth/react",
-  "version": "1.4.5",
+  "version": "1.4.6",
   "private": true,
   "type": "module",
   "exports": {
@@ -32,7 +32,8 @@
     "invitations.ts",
     "auth-return.ts",
     "support-server.ts",
-    "support-banner.tsx"
+    "support-banner.tsx",
+    "broker-two-factor-server.ts"
   ],
   "sideEffects": [
     "./styles.css"
