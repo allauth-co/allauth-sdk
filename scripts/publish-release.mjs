@@ -36,7 +36,7 @@ export function publicationPlan(release, expected, metadata) {
   return { action: "resume-draft", missing: verifyAssets(release, expected, false) };
 }
 function publish(tag) {
-  assert.equal(process.env.GITHUB_REPOSITORY, "thegarty/allauth-sdk", "Publishing is scoped to the reviewed SDK repository.");
+  assert.equal(process.env.GITHUB_REPOSITORY, "allauth-co/allauth-sdk", "Publishing is scoped to the reviewed SDK repository.");
   assert.ok(process.env.GH_TOKEN, "The workflow requires its native repository token.");
   const repository = process.env.GITHUB_REPOSITORY;
   const { entry, notes } = verifyRelease(tag);

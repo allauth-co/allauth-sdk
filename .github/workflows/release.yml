@@ -35,7 +35,7 @@ jobs:
       - run: pnpm check:release "$RELEASE_TAG"
   publish:
     needs: verify
-    if: github.repository == 'thegarty/allauth-sdk'
+    if: github.repository == 'allauth-co/allauth-sdk'
     permissions:
       contents: write
     runs-on: ubuntu-latest
