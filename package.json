@@ -7,7 +7,7 @@
     "check": "pnpm check:archives && pnpm check:source && pnpm check:regression && pnpm typecheck",
     "check:archives": "node scripts/verify-catalog.mjs",
     "check:source": "node scripts/scan-source.mjs",
-    "check:regression": "tsx --test tests/*.test.ts tests/*.test.mjs",
+    "check:regression": "tsx --experimental-test-module-mocks --test tests/*.test.ts tests/*.test.mjs",
     "typecheck": "tsc --noEmit",
     "check:release": "node scripts/verify-release.mjs",
     "release:publish": "node scripts/publish-release.mjs"
@@ -17,14 +17,9 @@
   },
   "devDependencies": {
     "@allauth/react": "workspace:*",
-    "@better-auth-ui/core": "1.7.27",
-    "@better-auth-ui/react": "1.7.27",
-    "@better-auth/passkey": "1.7.7",
-    "@tanstack/react-query": "5.104.1",
     "@types/node": "22.19.9",
     "@types/react": "19.2.13",
     "@types/react-dom": "19.2.3",
-    "better-auth": "1.7.7",
     "lucide-react": "0.575.0",
     "next": "16.3.8",
     "react": "19.2.7",

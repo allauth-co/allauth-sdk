@@ -2,6 +2,21 @@
 
 These notes reconstruct verified public archive contents. Git import dates are not historical SDK publication dates. Unknown dates are retained as unknown.
 
+## 2.0.0
+
+AllAuth’s React SDK now uses a first-party client and UI with no Better Auth package dependencies. It continues to use the existing signed proxy and authentication service.
+
+Publication time comes from the immutable GitHub release.
+
+- Existing portable components keep their import paths and same-origin proxy configuration.
+- Replace the v1 registry provider with the first-party AllAuthProvider and components. Custom forms should use the documented AllAuth client methods.
+- The optional passkey sign-in button uses existing credentials and keeps the native MFA continuation.
+- Upgrade when your application is ready. The v1 archives remain available and this SDK release requires no platform database migration.
+
+[Source](https://github.com/allauth-co/allauth-sdk/tree/v2.0.0/packages/react) · [Archive](https://allauth.co/sdk/allauth-react-2.0.0.tgz) · [Release record](https://allauth.co/releases/sdk-2-0-0)
+
+SHA-256: `53618c4834c622ec489435ae80f0dc113f415600894edd86db38660075f2a4da`
+
 ## 1.4.7
 
 The compact OrganizationSwitcher uses a centered SVG chevron with a consistent size across fonts and browsers.

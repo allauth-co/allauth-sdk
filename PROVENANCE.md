@@ -10,4 +10,6 @@ SDK 1.4.4 is a new release prepared through this repository's checked publicatio
 
 SDK 1.4.5 is a new opt-in support integration release. Its archive was copied only through the reviewed packaged-file allowlist; current source and the version tag are checked byte-for-byte against it. The added public regression uses synthetic data and fetch stubs, without hosted-platform source or private fixtures.
 
+SDK 2.0.0 carries the first-party React client and UI. The release catalog records the exact archive digest and hashes of the packaged source. Earlier archives and tag snapshots keep their original contents.
+
 The archives do not declare an SDK license and contain no SDK LICENSE file. Reconstruction adds no license or new rights. Dependency licenses and third-party terms remain separate. The package manifests retain `private: true`; npm publication is not configured.
