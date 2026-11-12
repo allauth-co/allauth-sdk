@@ -1,7 +1,8 @@
 # SDK documentation
 
 - [Packaged SDK guide](../packages/react/README.md): integration instructions exactly as distributed in the latest verified archive.
-- [Optional Better Auth UI adapter](../packages/react/BETTER_AUTH_UI.md).
+- [Upgrade v1 UI integrations to SDK v2](../packages/react/UI_UPGRADE.md).
+- [Optional registry adapter guide for SDK v1.4.7](https://github.com/allauth-co/allauth-sdk/blob/v1.4.7/packages/react/BETTER_AUTH_UI.md).
 - [Release notes](../CHANGELOG.md) and [machine-readable catalog](../releases/catalog.json).
 - [Source provenance](../PROVENANCE.md) and [release procedure](../RELEASING.md).
 

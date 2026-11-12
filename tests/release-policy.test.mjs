@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import test from "node:test";
 import { publicationPlan } from "../scripts/publish-release.mjs";
 import { notesFor } from "../scripts/catalog.mjs";
@@ -7,6 +8,12 @@ test("a new release without publication evidence does not invent a timestamp or 
   const notes = notesFor({ summary: "New SDK", notes: ["Retry-After forwarding"], publishedAt: null, dateConfidence: "pending", sourceUrl: "https://fixture.example/source", changelogUrl: "https://fixture.example/release", sha256: "a".repeat(64) });
   assert.match(notes, /new SDK publication/);
   assert.doesNotMatch(notes, /backfills|Recorded SDK publication time/);
+});
+
+test("the current SDK dependency graph contains no Better Auth packages", () => {
+  const lockfile = readFileSync(new URL("../pnpm-lock.yaml", import.meta.url), "utf8");
+  const legacyPackage = /^\s+['"]?(?:@better-auth(?:-ui)?\/|better-auth(?=[@:'"]))/m;
+  assert.ok(!legacyPackage.test(lockfile), "The current SDK workspace lockfile must stay independent of Better Auth.");
 });
 
 const expected = [

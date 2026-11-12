@@ -4,7 +4,7 @@
   "reconstructedHistory": true,
   "importedAt": "2026-10-30T01:38:34.868686+00:00",
   "sourceArchiveCatalog": "https://allauth.co/sdk/integrity.json",
-  "latestVersion": "1.4.7",
+  "latestVersion": "2.0.0",
   "releases": [
     {
       "version": "1.0.0",
@@ -2739,6 +2739,184 @@
           "path": "ui.tsx",
           "sha256": "908740817955fc395dff0d95d60e8f426b3cf37eb777b6c956caf86287ad3409",
           "bytes": 5441
+        }
+      ]
+    },
+    {
+      "version": "2.0.0",
+      "title": "AllAuth React SDK 2.0.0",
+      "summary": "AllAuth’s React SDK now uses a first-party client and UI with no Better Auth package dependencies. It continues to use the existing signed proxy and authentication service.",
+      "notes": [
+        "Existing portable components keep their import paths and same-origin proxy configuration.",
+        "Replace the v1 registry provider with the first-party AllAuthProvider and components. Custom forms should use the documented AllAuth client methods.",
+        "The optional passkey sign-in button uses existing credentials and keeps the native MFA continuation.",
+        "Upgrade when your application is ready. The v1 archives remain available and this SDK release requires no platform database migration."
+      ],
+      "publishedAt": null,
+      "dateConfidence": "pending",
+      "compatibility": "migration-required",
+      "upgradeUrl": "https://github.com/allauth-co/allauth-sdk/blob/v2.0.0/packages/react/UI_UPGRADE.md",
+      "changelogUrl": "https://allauth.co/releases/sdk-2-0-0",
+      "downloadUrl": "https://allauth.co/sdk/allauth-react-2.0.0.tgz",
+      "sha256": "53618c4834c622ec489435ae80f0dc113f415600894edd86db38660075f2a4da",
+      "sourceUrl": "https://github.com/allauth-co/allauth-sdk/tree/v2.0.0/packages/react",
+      "provenance": [
+        {
+          "kind": "release",
+          "details": "The reviewed AllAuth platform SDK archive supplies the exact packaged source. The archive, recorded source hashes and version tag are verified together.",
+          "files": [
+            "client.ts",
+            "client-passkeys.ts",
+            "client-query.ts",
+            "next.ts",
+            "react.tsx",
+            "ui.tsx",
+            "UI_UPGRADE.md"
+          ]
+        }
+      ],
+      "filename": "allauth-react-2.0.0.tgz",
+      "archivePath": "releases/archives/allauth-react-2.0.0.tgz",
+      "checksumPath": "releases/checksums/allauth-react-2.0.0.tgz.sha256",
+      "tag": "v2.0.0",
+      "githubReleaseUrl": "https://github.com/allauth-co/allauth-sdk/releases/tag/v2.0.0",
+      "packagePrivate": true,
+      "sdkLicense": null,
+      "sourceFiles": [
+        {
+          "path": "README.md",
+          "sha256": "c3f61eef166281cfb65655f65ca383fb41be2818000912b961e3f766b44dbe0d",
+          "bytes": 14919
+        },
+        {
+          "path": "UI_UPGRADE.md",
+          "sha256": "0d89c507d8a674153953c80711547a521b88519db3d2744f773e3bb69536abb4",
+          "bytes": 3867
+        },
+        {
+          "path": "account-settings.tsx",
+          "sha256": "edcfa96b5e0a0f7cf3122e254a9d0147a0727624851176772be1e1d3b19cffdb",
+          "bytes": 10943
+        },
+        {
+          "path": "allauth-wordmark.tsx",
+          "sha256": "33a358d83663d9fe9cd5da7789302b0b5005e633d7cdbacad07a595b8068a3cf",
+          "bytes": 2445
+        },
+        {
+          "path": "auth-return.ts",
+          "sha256": "11fb99ab4dfad4988e3dbdcf09a7c1216cd72383ebda6760a175691515a73084",
+          "bytes": 3487
+        },
+        {
+          "path": "avatar-upload.tsx",
+          "sha256": "b2101bee74c59dd5db6c66321633fd94bd14c3f9e42662b387abd4854a13b58e",
+          "bytes": 6638
+        },
+        {
+          "path": "branding.ts",
+          "sha256": "71d0276170b2c121b59ee678fe11935b1ada0cb39eda92dc75ece6dca275ffe7",
+          "bytes": 7547
+        },
+        {
+          "path": "broker-two-factor-server.ts",
+          "sha256": "eacaf38c425a5c45487d68b638a2bd836f24eb9547aa31c6cb23f8d66b7db488",
+          "bytes": 4502
+        },
+        {
+          "path": "client-passkeys.ts",
+          "sha256": "bf0b3231b8ecd7c26293418fe28b517c44bfe38c80e8846c51edd4deb6ffe5e2",
+          "bytes": 6252
+        },
+        {
+          "path": "client-query.ts",
+          "sha256": "7d6c4e60b85da1db534b42bf85fc39e886d261631b8084bcb4715f05153c3a2f",
+          "bytes": 3286
+        },
+        {
+          "path": "client.ts",
+          "sha256": "945ff5a67d04fcfd7e95cfacfeb3f65a1a3d68003e2965a4642044b4fe011047",
+          "bytes": 23945
+        },
+        {
+          "path": "dialog.tsx",
+          "sha256": "92b0df2de353f1f4b491f71fc24a624aa007a430fc4776666267c33c6f3cd281",
+          "bytes": 5051
+        },
+        {
+          "path": "google-icon.ts",
+          "sha256": "da34e77b4cfecb5fbeaabb8dbb714ca902d2ea48ff6e12df322d086dbda7e946",
+          "bytes": 45114
+        },
+        {
+          "path": "header.css",
+          "sha256": "3ab7cce9f708adea0835dded0c86a22cec99eede4bc3d9bb252965f131d44af0",
+          "bytes": 25814
+        },
+        {
+          "path": "header.tsx",
+          "sha256": "2193d1e68fd913c52cf946a5e4922bee858d51b39477ed0dcdfff2ce2f659c43",
+          "bytes": 13970
+        },
+        {
+          "path": "helpers.ts",
+          "sha256": "20d1ff65bb3a08c2b8f87b30e5b7a4caffc1451fbd1022fd285f1be31de93a50",
+          "bytes": 3215
+        },
+        {
+          "path": "invitations.ts",
+          "sha256": "f267179803e60332aac990a7410fc2f60b3c39a2ab236dca1d55444e9e756fad",
+          "bytes": 3957
+        },
+        {
+          "path": "next.ts",
+          "sha256": "ef80bcac16941aa538b3eaad29ad12d329451aaa2eb3cac41bfb0441e6524b23",
+          "bytes": 16562
+        },
+        {
+          "path": "organization-profile.tsx",
+          "sha256": "3213d8fc9d01507344d12dd2d6af758dd300f6e8d530a2a5d65e0ae7725eaec5",
+          "bytes": 45597
+        },
+        {
+          "path": "package.json",
+          "sha256": "a2749a95d28a81257a06871405afe527b3be175d47f5739c752c01a038f1467b",
+          "bytes": 1157
+        },
+        {
+          "path": "passkey.ts",
+          "sha256": "025c9c047683300457a0e453e476d2cd3424521ccd7208533d62162cef2b05c4",
+          "bytes": 4435
+        },
+        {
+          "path": "password-policy.ts",
+          "sha256": "b1580c5ea33b3962fb19813d775d02005338517934eb6ca1c3e5739600a6e918",
+          "bytes": 2973
+        },
+        {
+          "path": "react.tsx",
+          "sha256": "b191c1239196f97a4cad668fbbd5c4e43394080bf469e8e75a6b5a98854e0975",
+          "bytes": 70312
+        },
+        {
+          "path": "styles.css",
+          "sha256": "b9018f97e82dd72528b85ae7374d2ed550fb99eb8c5788c36aaa6aefe2ffd46f",
+          "bytes": 13658
+        },
+        {
+          "path": "support-banner.tsx",
+          "sha256": "17bd4378f7985e7f9a83664f67b835eecc33b5d2362fb2a4239436d74b2b9e46",
+          "bytes": 5972
+        },
+        {
+          "path": "support-server.ts",
+          "sha256": "c40d77f3aefb6b1f7de52e9f0cf5d026563b9a248a3ada9fb4eef124371d1770",
+          "bytes": 18843
+        },
+        {
+          "path": "ui.tsx",
+          "sha256": "b373cb7b0d845d8518529e70acff3af3d6529b072011a03e51de3781a8688ac6",
+          "bytes": 576
         }
       ]
     }

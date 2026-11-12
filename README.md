@@ -5,12 +5,14 @@ The portable AllAuth React SDK, its Next.js app proxy, and verified release arch
 ## Install
 
 ```sh
-pnpm add https://allauth.co/sdk/allauth-react-1.4.7.tgz better-auth@1.7.7 @better-auth/passkey@1.7.7 lucide-react@0.575.0
+pnpm add https://allauth.co/sdk/allauth-react-2.0.0.tgz lucide-react@0.575.0
 ```
 
-Use compatible React and React DOM versions from the SDK's [peer dependency ranges](packages/react/package.json), and import `@allauth/react/styles.css`. Next.js is needed only for the Next.js adapter. Optional Better Auth UI integration has additional peers declared in that manifest.
+Use compatible React and React DOM versions from the SDK's [peer dependency ranges](packages/react/package.json), and import `@allauth/react/styles.css`. Next.js is needed only for the Next.js adapter.
 
 See the exact packaged [integration guide](packages/react/README.md), [repository docs](docs/README.md), [changelog](CHANGELOG.md), and [GitHub releases](https://github.com/allauth-co/allauth-sdk/releases). Each release provides its original `.tgz` and a SHA-256 checksum. Canonical downloads remain at [allauth.co/sdk](https://allauth.co/sdk).
+
+SDK 2.0.0 uses an AllAuth client and first-party UI with no Better Auth package dependencies. Existing portable components keep their imports and signed proxy configuration. If you use the v1 registry adapter or custom client internals, follow the [v2 UI upgrade guide](packages/react/UI_UPGRADE.md). Earlier archives remain available for existing applications.
 
 SDK 1.4.7 centers the chevron in the compact organization switcher. Update the pinned SDK and rebuild the application to receive the visual fix. Existing configuration works as before.
 
