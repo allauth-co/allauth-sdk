@@ -7,12 +7,15 @@ assert.equal(catalog.reconstructedHistory, true);
 assert.equal(catalog.sourceArchiveCatalog, "https://allauth.co/sdk/integrity.json");
 assert.deepEqual(catalog.releases.map((entry) => entry.filename).sort(), Object.keys(integrity).sort());
 assert.deepEqual(readdirSync(join(root, "releases/archives")).sort(), Object.keys(integrity).sort());
+const canonicalRepository = "https://github.com/allauth-co/allauth-sdk";
+const historicalRepository = "https://github.com/thegarty/allauth-sdk";
 let fileCount = 0;
 for (const entry of catalog.releases) {
   assert.equal(entry.tag, `v${entry.version}`);
   assert.equal(entry.downloadUrl, `https://allauth.co/sdk/${entry.filename}`);
-  assert.equal(entry.sourceUrl, `https://github.com/thegarty/allauth-sdk/tree/${entry.tag}/packages/react`);
-  assert.equal(entry.githubReleaseUrl, `https://github.com/thegarty/allauth-sdk/releases/tag/${entry.tag}`);
+  const repository = entry.sourceUrl.startsWith(`${historicalRepository}/`) ? historicalRepository : canonicalRepository;
+  assert.equal(entry.sourceUrl, `${repository}/tree/${entry.tag}/packages/react`);
+  assert.equal(entry.githubReleaseUrl, `${repository}/releases/tag/${entry.tag}`);
   assert.ok(entry.summary && entry.notes.length && entry.provenance.length);
   if (entry.dateConfidence === "unknown") assert.equal(entry.publishedAt, null);
   const files = verifyTag(entry, archiveFiles(entry));

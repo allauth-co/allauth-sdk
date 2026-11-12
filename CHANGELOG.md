@@ -2,6 +2,20 @@
 
 These notes reconstruct verified public archive contents. Git import dates are not historical SDK publication dates. Unknown dates are retained as unknown.
 
+## 1.4.7
+
+The compact OrganizationSwitcher uses a centered SVG chevron with a consistent size across fonts and browsers.
+
+Publication time: see the immutable GitHub release metadata.
+
+- The decorative chevron stays centered next to the organization name and retains its size when the name is truncated.
+- Organization selection, creation, management, keyboard navigation and existing SDK integrations remain compatible.
+- Update your pinned SDK to 1.4.7 and rebuild the application to receive the visual fix. No configuration changes are required.
+
+[Source](https://github.com/allauth-co/allauth-sdk/tree/v1.4.7/packages/react) · [Archive](https://allauth.co/sdk/allauth-react-1.4.7.tgz) · [Release record](https://allauth.co/releases/sdk-1-4-7)
+
+SHA-256: `341f8c6441f8e3edd7dbeb31ff4466247a177ed60c24b56c9f62c526cdc39e01`
+
 ## 1.4.6
 
 Applications can explicitly display the shared AllAuth authenticator or backup-code challenge inside their own sign-in screen. AllAuth continues to verify the factor and resume native OAuth; existing integrations retain hosted verification unless they upgrade and opt in.
